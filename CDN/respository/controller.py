@@ -1,11 +1,13 @@
 from bson import ObjectId
-from connection import ConnectionDB
+from respository.connection import ConnectionDB
 
 
 class Controller:
     def __init__(self):
         conexion = ConnectionDB()
         self.db=conexion.get_db()
+        if self.db is  None:
+            return None
     def create(self, tabla, data):
         try:
             colection = self.db[tabla]
